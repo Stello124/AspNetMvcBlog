@@ -1,1 +1,21 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<partial name="_Header" />*@
+@await Component.InvokeAsync("Navbar")
+@*<partial name="_Slider" />*@
+
+@await Component.InvokeAsync("Slider")
+
+<partial name="_Articles" />
+
+<section class="footer-2 section-padding gray-bg pb-5">
+    <div class="container">
+
+        <partial name="_Subscribe" />
+        <partial name="_Footer" />
+    </div>
+</section>
+
+

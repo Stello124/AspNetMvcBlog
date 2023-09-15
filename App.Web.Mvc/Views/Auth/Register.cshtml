@@ -1,0 +1,96 @@
+﻿
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AspNetMvcBlog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AspNetMvcBlog.styles.css" asp-append-version="true" />
+
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/dist2/css/style.css">
+</head>
+
+<body>
+    @model AspNetMvcBlog.Data.Entity.User
+
+    <!-- REGISTRATION FORM -->
+    <div class="text-center" style="padding:50px 0">
+        <div class="logo">register</div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form asp-controller="Auth" asp-action="Register">
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group">
+                        <div class="form-group">
+                            <label class="form-label" asp-for="UserName">UserName</label>
+                            <input type="text" asp-for="UserName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" asp-for="UserSurname">UserSurname</label>
+                            <input type="text" asp-for="UserSurname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" asp-for="UserPassword">UserPassword</label>
+                            <input type="password" asp-for="UserPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_password_confirm">Password Confirm</label>
+                            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_email">UserEmail</label>
+                            <input type="email" class="form-control" asp-for="UserEmail">
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg_fullname">UserNick</label>
+                            <input type="text" asp-for="UserNick" class="form-control">
+                        </div>
+                        <div class="form-group login-group-checkbox">
+                            <input type="checkbox" class="" id="reg_agree" name="reg_agree">
+                            <label for="reg_agree">i agree with <a href="/Terms">terms</a></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+                </div>
+                <div class="etc-login-form">
+                    <p>already have an account? <a href="/Login">login here</a></p>
+                </div>
+            </form>
+        </div>
+        <!-- end:Main Form -->
+    </div>
+
+    <!-- External Libraries -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="~/dist2/js/custom.js"></script>
+
+    <!-- Inline Script for Password Confirmation -->
+    <script>
+        $(document).ready(function () {
+            $("#register-form").validate({
+                rules: {
+                    reg_password_confirm: {
+                        equalTo: "#reg_password"
+                    }
+                },
+                messages: {
+                    reg_password_confirm: {
+                        equalTo: "Passwords do not match!"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

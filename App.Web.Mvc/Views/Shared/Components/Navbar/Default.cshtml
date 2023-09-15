@@ -1,0 +1,51 @@
+﻿@model AspNetMvcBlog.Models.NavbarViewModel
+
+<nav class="navbar navbar-expand-lg navigation-2 navigation ">
+	<a class="navbar-brand text-uppercase d-lg-none" asp-controller="Home" asp-action="Index" >
+		<img src="../images/logo.png" alt="" class="img-fluid">
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="ti-menu"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbar-collapse">
+		<ul id="menu" class="menu navbar-nav mx-auto">
+			@*Home*@
+			<li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+
+			@*Categories*@
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Categories
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					@foreach (var item in Model.Categories)
+					{
+						<a class="dropdown-item" asp-controller="Category" asp-action="CategoryIndex" asp-route-id="@item.Id">@item.CategoryName</a>
+					}					
+				</div>
+			</li>
+			@*Pages*@
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Pages
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					@foreach (var item in Model.Pages)
+					{
+						<a class="dropdown-item" asp-controller="Page" asp-action="Detail" asp-route-id="@item.Id">@item.PageTitle</a>
+					}
+				</div>
+			</li>
+			<form class="form-inline" asp-controller="Category" asp-action="Search">
+				<input class="form-control mr-sm-2" type="text" name="SearchString" placeholder="Search" aria-label="Search">
+				<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</ul>
+		<ul class="list-inline mb-0 d-block d-lg-none">
+			<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+			<li class="list-inline-item"><a href="#"><i class="ti-twitter"></i></a></li>
+			<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
+			<li class="list-inline-item"><a href="#"><i class="ti-pinterest"></i></a></li>
+		</ul>	
+	</div>
+</nav>

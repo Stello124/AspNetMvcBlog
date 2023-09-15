@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AspNetMvcBlog.Data.Entity.Post>
+
+<section class="single-block-wrapper section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+				<div class="single-post">
+					<div class="post-header mb-5 text-center">
+						<div class="meta-cat">
+							<a class="post-category font-extra text-color text-uppercase font-sm letter-spacing-1" href="#">@Model.FirstOrDefault().CategoryPosts.FirstOrDefault().Category.CategoryName</a>
+
+						</div>
+						<h2 class="post-title mt-2">
+							@Model.FirstOrDefault().PostTitle
+						</h2>
+
+						<div class="post-meta">
+							<span class="text-uppercase font-sm letter-spacing-1 mr-3">by Liam</span>
+							<span class="text-uppercase font-sm letter-spacing-1">@Model.FirstOrDefault().PostDate</span>
+						</div>
+						<div class="post-featured-image mt-5">
+							<img src="~/images/slider/slider1.jpg" class="img-fluid w-100" alt="featured-image">
+						</div>
+					</div>
+					<div class="post-body">
+						<div class="entry-content">
+							@Model.FirstOrDefault().PostContext
