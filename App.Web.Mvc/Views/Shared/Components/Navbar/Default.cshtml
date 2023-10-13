@@ -1,4 +1,4 @@
-﻿@model AspNetMvcBlog.Models.NavbarViewModel
+﻿@model App.Web.Mvc.Models.NavbarViewModel
 
 <nav class="navbar navbar-expand-lg navigation-2 navigation ">
 	<a class="navbar-brand text-uppercase d-lg-none" asp-controller="Home" asp-action="Index" >
@@ -36,6 +36,9 @@
 					}
 				</div>
 			</li>
+			@*Login*@
+			<li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Auth" asp-action="Login">Login</a></li>
+
 			<form class="form-inline" asp-controller="Category" asp-action="Search">
 				<input class="form-control mr-sm-2" type="text" name="SearchString" placeholder="Search" aria-label="Search">
 				<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
